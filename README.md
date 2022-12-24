@@ -1,1 +1,8 @@
-<h1 align="center">Сайт<a href="https://daniilshat.ru/" target="_blank">marq</a> 
+<h1 align="center">Сайт marq</a> 
+
+<h3 align="center">Курсовая работа по "Web-программирование"</h3>
+
+<h3 align="center">Выполнили</h3>
+<h3>БО941ПРИ Герасимов Леонид</h3>
+<h3>БО941ПРИ Заяц Никита</h3>
+<h3>БО942ПРИ Гапоненко Ефим</h3>
