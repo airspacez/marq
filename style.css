@@ -1,0 +1,633 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Manrope;
+    background-image: url(img/bgimage.png);
+    background-size: cover;
+}
+
+#app {
+  min-width: 375px;
+  width: 100%;
+}
+
+/* AppHeader - шапка сайта*/
+#header {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 24px;
+	z-index: 999;
+    box-shadow: 0 2px 0 #dedefa;
+}
+
+#header-category {
+    position: relative;
+}
+
+.onScroll {
+    box-shadow: 0 8px 24px -12px #0005;
+}
+
+.header-button {
+    height: 46px;
+    padding: 20px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    border: none;
+    border-radius: 23px;
+    outline-offset: -2px;
+    transition: 0.1s;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+    position: relative;
+}
+
+.header-button:hover {
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.header-button:active {
+    opacity: 0.7;
+    transform: scale(0.95);
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.normal {
+    outline: 2px solid #dedefa;
+}
+
+.normal:hover {
+    background-color: #e7e7ee;
+    outline: 2px solid #cbcbd3;
+}
+
+.accent {
+    outline: 2px solid #3d3dd8;
+    color: #3d3dd8;
+}
+
+.accent:hover {
+    background-color: #5050dc;
+    outline: 2px solid #5050dc;
+    color: #fff;
+}
+
+.mgl {
+    margin-left: auto;
+}
+
+/* AppEditorNote - редактор*/
+#editor {
+    display: none;
+    content: '';
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #bcbcd3bc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+}
+
+.editor {
+    content: '';
+    width: 900px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 23px;
+    box-shadow: 0 8px 32px #4e4e5757;
+    padding: 12px 20px;
+    margin: 12px;
+    display: grid;
+    grid-template-rows: 64px 1fr 64px;
+    align-items: flex-start;
+    position: fixed;
+}
+
+#editNote {
+    display: none;
+    content: '';
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #bcbcd3bc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+}
+
+.editNote {
+    content: '';
+    width: 900px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 23px;
+    box-shadow: 0 8px 32px #4e4e5757;
+    padding: 12px 20px;
+    margin: 12px;
+    display: grid;
+    grid-template-rows: 64px 1fr 64px;
+    align-items: flex-start;
+}
+
+
+.editor-header {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.editor-content {
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 0.4fr 0.6fr;
+    gap: 16px;
+}
+
+.editor-footer {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.editor-title {
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    border: 0;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    outline-color: #5050dc;
+    border: 2px solid transparent;
+    overflow: hidden;
+    transition: 0.1s;
+}
+
+.editor-title:hover {
+    background-color: #fafafe;
+    border: 2px solid #dedefa !important;
+    transition: 0.1s;
+}
+
+.editor-save {
+    height: 46px;
+    padding: 20px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 2px solid #3d3dd8;
+    border-radius: 23px;
+    transition: 0.1s;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    color: #3d3dd8;
+}
+
+.editor-save:hover {
+    background-color: #5050dc;
+    border: 2px solid #5050dc;
+    cursor: pointer;
+    color: #fff;
+}
+
+.editor-save:active {
+    opacity: 0.7;
+    transform: scale(0.95);
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.editor-close {
+    padding: 10px 15px;
+    font-size: 24px;
+    background-color: #fff;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #414141;
+    transition: 0.1s;
+}
+
+.editor-close:hover {
+    background-color: #d9d9de;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.editor-close:active{
+    opacity: 0.7;
+    transform: scale(0.95);
+    cursor: pointer;
+    transition: 0.1s;    
+}
+
+.editor-text {
+    font-family: inherit;
+    font-size: 16px;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    border: 2px solid #dedefa;
+    background-color: #fafafe;
+    border-radius: 4px;
+    outline-color: #5050dc;
+    resize: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
+
+.editor-processed {
+    border: 2px solid #dedefa;
+    border-radius: 4px;
+    padding: 12px 18px;
+    line-height: 1.6;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    position: relative;
+    max-height: 448px;
+}
+
+.editor-tag {
+    height: 46px;
+    padding: 20px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 2px solid #dedefa;
+    border-radius: 23px;
+    transition: 0.1s;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.editor-tag:hover {
+    background-color: #e7e7ee;
+    border: 2px solid #cbcbd3;
+    cursor: pointer;
+}
+
+.editor-tag:active {
+    opacity: 0.7;
+    transform: scale(0.95);
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.editor-date {
+    font-weight: 500;
+    color: #9e9eac;
+}
+
+/* AppEditnote - редактор для существующих заметок */
+
+#editnote {
+    display: none;
+    content: '';
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #bcbcd3bc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+}
+
+.editnote {
+    content: '';
+    width: 900px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 23px;
+    box-shadow: 0 8px 32px #4e4e5757;
+    padding: 12px 20px;
+    margin: 12px;
+    display: grid;
+    grid-template-rows: 64px 1fr 64px;
+    align-items: flex-start;
+    position: fixed;
+}
+
+.editnote-header {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.editnote-content {
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 0.4fr 0.6fr;
+    gap: 16px;
+}
+
+.editnote-footer {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.editnote-title {
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    border: 0;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    outline-color: #5050dc;
+    border: 2px solid transparent;
+    overflow: hidden;
+    transition: 0.1s;
+}
+
+.editnote-title:hover {
+    background-color: #fafafe;
+    border: 2px solid #dedefa !important;
+    transition: 0.1s;
+}
+
+.editnote-save {
+    height: 46px;
+    padding: 20px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 2px solid #3d3dd8;
+    border-radius: 23px;
+    transition: 0.1s;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    color: #3d3dd8;
+}
+
+.editnote-save:hover {
+    background-color: #5050dc;
+    border: 2px solid #5050dc;
+    cursor: pointer;
+    color: #fff;
+}
+
+.editnote-save:active {
+    opacity: 0.7;
+    transform: scale(0.95);
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.editnote-close {
+    padding: 10px 15px;
+    font-size: 24px;
+    background-color: #fff;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #414141;
+    transition: 0.1s;
+}
+
+.editnote-close:hover {
+    background-color: #d9d9de;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.editnote-close:active{
+    opacity: 0.7;
+    transform: scale(0.95);
+    cursor: pointer;
+    transition: 0.1s;    
+}
+
+.editnote-text {
+    font-family: inherit;
+    font-size: 16px;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    border: 2px solid #dedefa;
+    background-color: #fafafe;
+    border-radius: 4px;
+    outline-color: #5050dc;
+    resize: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
+
+.editnote-date {
+    font-weight: 500;
+    color: #9e9eac;
+}
+
+/*AppContent - область со списком заметок*/
+.content {
+    width: 100%;
+    padding: 100px 24px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    grid-gap: 16px;
+    align-items: start;
+    justify-content: flex-start;
+}
+
+/*AppContentNote - верстка для отдельной заметки из списка заметок */
+.note {
+    outline: 2px solid #dedefa;
+    outline-offset: -2px;
+    padding: 20px;
+    border-radius: 23px;
+    height: min-content;
+    list-style: none;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    gap: 8px;
+    transition: 0.1s;
+    background: #fff;
+}
+
+.note:hover {
+    cursor: pointer;
+    transition: 0.1s;
+    background-color: #e7e7ee;
+    outline: 2px solid #cbcbd3;
+}
+
+.note-header {
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note-title {
+    font-weight: 600;
+    font-size: 20px;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;   
+}
+
+.note-delete {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    border: none;
+    background-color: transparent;
+    transition: 0.1s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.note-delete:hover {
+    background-color: #1f1f2020;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.note-preview {
+    text-overflow: ellipsis;
+    height: 80px;
+    overflow: hidden;
+}
+
+.note-footer {
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note-tags {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5050dc;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note-tags:before {
+    content: '#';
+}
+
+.note-tags:after {
+    margin-right: 8px;
+}
+
+.note-date {
+    font-size: 14px;
+    color: #555560;
+}
+
+@media (max-width: 663px) {
+	
+    .text {
+        display: none;
+    }
+	
+    .header-button {
+		height: 46px;
+		padding: 17px;
+    }
+	
+	.editor {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .editNote {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+	
+	.content {
+        overflow: hidden;
+    }
+}
